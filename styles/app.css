@@ -1,10 +1,11 @@
+/* Root Variables */
 :root {
   /* Fonts */
 
-  --default-font: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
+  --roboto-font: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --heading-font: 'Nunito', sans-serif;
-  --nav-font: 'Poppins', sans-serif;
+  --nunito-font: 'Nunito', sans-serif;
+  --poppins-font: 'Poppins', sans-serif;
 
   /* Global Colors */
   --background-color: #ffffff; /* Background color for the entire website */
@@ -23,11 +24,9 @@
   --nav-dropdown-hover-color: #4154f1; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
-/*? -------------------------------------------------------------- */
-/*? # General Styling & Shared Classes */
-/*? -------------------------------------------------------------- */
+/*?  General Styling & Shared Classes */
 
-/*dark mode */
+/* Dark Mode Variables */
 .dark-mode {
   --dark-background-color: #060606;
   --dark-default-color: #ffffff;
@@ -39,11 +38,10 @@
 body {
   color: var(--default-color);
   background-color: var(--background-color);
-  font-family: var(--default-font);
+  font-family: var(--roboto-font);
 }
 
 a {
-  color: var(--accent-color);
   text-decoration: none;
   transition: 0.3s;
 }
@@ -59,7 +57,7 @@ h4,
 h5,
 h6 {
   color: var(--heading-color);
-  font-family: var(--heading-font);
+  font-family: var(--nunito-font);
 }
 
 .container-fluid {
@@ -69,4 +67,208 @@ h6 {
 .container {
   margin: 0 auto;
   padding: 0 1.2rem;
+}
+/*! END General Styling & Shared Classes */
+/*? Navigation Styling */
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1.2rem;
+  transition: all 0.3s ease-in-out;
+  background-color: transparent;
+}
+/*? Navigation Logo Styling */
+.nav__logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav__logo-text {
+  font-size: 3rem;
+  font-family: var(--nunito-font);
+  font-weight: 700;
+  color: var(--heading-color);
+}
+.nav__logo-icon {
+  color: var(--accent-color);
+}
+/*? END Navigation Logo Styling */
+/*? Mobile Navigation Styling */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+.overlay.active {
+  display: block;
+}
+
+/*? Mobile Navigation Menu List Styling */
+.mobile-nav__menu-list {
+  max-height: 0;
+  position: fixed;
+  top: 70px;
+  right: 12px;
+  bottom: 20px;
+  left: 12px;
+  border-radius: 6px;
+  background-color: var(--nav-mobile-background-color);
+  transition: all 0.3s ease-in-out;
+  z-index: 9999;
+  overflow-y: hidden;
+  font-size: 17px;
+  font-family: var(--poppins-font);
+  font-weight: 500;
+}
+
+.mobile-nav__menu-list-active {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 10px 0px;
+  overflow-y: scroll;
+}
+
+.mobile-nav__menu-item {
+  padding: 9px 20px;
+}
+
+/* Mobile Navigation Menu Link Styling */
+.mobile-nav__menu-link,
+.mobile-nav__submenu-link {
+  color: var(--nav-dropdown-color);
+}
+.mobile-nav__menu-link.active {
+  color: var(--nav-dropdown-hover-color);
+}
+.mobile-nav__menu-link:hover {
+  color: var(--nav-dropdown-hover-color);
+}
+
+/*? Mobile Navigation Sub-Menu Header*/
+.mobile-nav__submenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-nav__submenu-icon {
+  margin-right: 9px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.mobile-nav__submenu-icon.active {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  transform: rotate(180deg);
+}
+
+.mobile-nav__submenu-body {
+  opacity: 0;
+  max-height: 0;
+  background-color: rgba(33, 37, 41, 0.03);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 6px;
+  margin: 0px 30px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.mobile-nav__submenu-body.active {
+  opacity: 1;
+  max-height: 1000px;
+  padding: 10px 0px;
+}
+
+.mobile-nav__submenu-body-item {
+  padding: 10px 20px;
+}
+
+/*? END Mobile Navigation Sub-Menu Header*/
+/* ? Mobile Navigation Right */
+.mobile-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.mobile-nav__btn {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 0.6rem 1.5rem;
+}
+/*? Mobile Hamburger  */
+.mobile__hamburger {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 4px;
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.mobile__hamburger-line {
+  position: relative;
+}
+.mobile__hamburger-line::before {
+  transition: all 0.2s ease-in-out;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--nav-color);
+  border-radius: 1px;
+}
+.mobile__hamburger-active .mobile__hamburger-line:nth-child(2)::before {
+  opacity: 0;
+}
+.mobile__hamburger-active .mobile__hamburger-line:nth-child(1)::before {
+  transform: rotate(45deg) translate(6px, 5.5px);
+}
+.mobile__hamburger-active .mobile__hamburger-line:nth-child(3)::before {
+  transform: rotate(-45deg) translate(6px, -5.8px);
+}
+.mobile__hamburger-active {
+  position: relative;
+  z-index: 9999;
+}
+/*? larger screen nav  */
+.nav__menu-list {
+  display: none;
+}
+.nav__menu-item {
+}
+.nav__menu-link {
+}
+
+/* Nav Styling  */
+
+.main {
+  height: 500px;
+  width: 100%;
+  background-color: rgb(76, 255, 180);
+}
+
+.test {
+  margin-top: 1rem;
+  padding: 20px;
+  background-color: red;
+  color: wheat;
 }
