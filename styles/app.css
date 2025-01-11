@@ -67,6 +67,7 @@ h6 {
 .container {
   margin: 0 auto;
   padding: 0 1.2rem;
+  max-width: 1320px;
 }
 /*! END General Styling & Shared Classes */
 /*? Navigation Styling */
@@ -82,7 +83,10 @@ h6 {
   padding: 2rem 1.2rem;
   transition: all 0.3s ease-in-out;
   background-color: transparent;
+  max-width: 1200px; /* Adjust max-width as needed */
+  margin: 0 auto; /* Center the navigation bar */
 }
+
 /*? Navigation Logo Styling */
 .nav__logo {
   display: flex;
@@ -249,15 +253,94 @@ h6 {
   position: relative;
   z-index: 9999;
 }
-/*? larger screen nav  */
+/*? Larger Screen Navigation Menu */
 .nav__menu-list {
   display: none;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  font-family: var(--poppins-font);
+  font-weight: 500;
 }
 .nav__menu-item {
+  position: relative; /* Important for the dropdown */
 }
 .nav__menu-link {
+  padding: 1.8rem 1.5rem;
+  color: var(--nav-color);
+}
+.nav__menu-list .mobile-nav__btn {
+  padding: 1rem 1.5rem;
 }
 
+.mobile-nav__btn:hover,
+.nav__btn:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+.dropdown-menu-header {
+  display: flex;
+  align-items: center;
+}
+.dropdown-menu-header svg {
+  transition: all 0.25s ease-in-out;
+}
+.nav__menu-item:hover .dropdown-menu-header svg {
+  transition: all 0.25s ease-in-out;
+  transform: rotate(180deg);
+  color: var(--accent-color);
+}
+.dropdown-menu-header svg {
+  margin-left: -1rem;
+  margin-right: 0.5rem;
+  color: var(--accent-color);
+}
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 0.2s ease 0.1s, transform 0.25s ease 0.1s;
+  pointer-events: none;
+  width: max-content;
+  border-radius: 6px;
+}
+
+.dropdown-menu li {
+  padding: 8px 16px;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.nav__menu-item:hover .dropdown-menu,
+.dropdown-menu:hover {
+  opacity: 1;
+  transform: translateY(60px);
+  pointer-events: auto;
+}
+
+.nav__menu-item:hover .nav__menu-link {
+  color: var(--accent-color);
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--nav-dropdown-background-color);
+  color: var(--nav-dropdown-hover-color);
+  transition: color 0.25s ease-in-out;
+}
 /* Nav Styling  */
 
 .main {
