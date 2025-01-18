@@ -1,6 +1,42 @@
+@media screen and (min-width: 575px) {
+  .container {
+    max-width: 540px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+  .hero .hero__text {
+    align-items: flex-start;
+  }
+
+  .hero__cta {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .hero__cta-btn {
+    min-width: fit-content;
+  }
+
+  .hero__title {
+    font-size: 4.8rem;
+    line-height: 5.6rem;
+  }
+  .hero__desc {
+    font-size: 2rem;
+  }
+}
 /* Media query for screens larger than 992px */
 @media screen and (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
   /*? Hide the Mobile Screen Navigation Menu */
+
   .mobile-nav__right {
     display: none;
   }
@@ -16,5 +52,23 @@
   /*? Show the Larger Screen Navigation Menu */
   .nav__menu-list {
     display: flex;
+  }
+
+  .hero {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
   }
 }
